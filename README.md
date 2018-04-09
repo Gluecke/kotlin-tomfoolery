@@ -2,10 +2,10 @@
 Nothing special, blatantly copied from intro site
 
 ## Auto-restart
-./gradlew build --continuous
+`./gradlew build --continuous`
 
 ## To Run
-./gradlew bootRun
+`./gradlew bootRun`
 
 ### Example
-http://localhost:8080/greetings
+`http://localhost:8080/greetings`
