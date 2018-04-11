@@ -11,6 +11,7 @@ class UrlShrinkerController(val shrinkerService: ShrinkerService) {
     fun shrinkUrl(@RequestBody url: LongUrl): ShortUrl? {
 
         println("url to shorten ${url.longUrl}")
+        println("this is a change")
 
         return shrinkerService.shrink(url).also { println(url) }
     }
