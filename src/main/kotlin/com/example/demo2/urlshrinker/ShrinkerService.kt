@@ -9,8 +9,6 @@ class ShrinkerService {
 
         val restTemplate = RestTemplate()
 
-        println("this is a change")
-
         val res = restTemplate.postForEntity("https://www.googleapis.com/urlshortener/v1/url?key=${url.apiKey}",
                 url,
                 UrlShrinkerController.ShortUrl::class.java)
