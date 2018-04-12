@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 import java.util.concurrent.atomic.AtomicLong
 
 @RestController
@@ -12,11 +13,16 @@ class GreetingController {
     val counter = AtomicLong()
 
     @GetMapping("/greetings")
-    fun greetings(@RequestParam(value = "name") name: String?): Greeting? {
+    fun greetings(@RequestParam(value = "name") name: String?): List<Greeting> {
 
-        val statement = name?.toUpperCase() ?: "world".toUpperCase()+counter
+        val statement = name?.toUpperCase() ?: "world".toUpperCase()
 
-        return Greeting(counter.incrementAndGet(), "Hello, $statement!")
+        val greetings = listOf("Bonjour", "Hola", "Hallo", "Ciao", "Hello", "Salaam", "Zdras-Tvuy-Te")
+
+        val random = Random()
+
+        return greetings.filter { random.nextBoolean() }
+                .map { g -> Greeting(counter.incrementAndGet(), g.plus(", $statement")) }
     }
 
     @GetMapping("/greetings/{season}")
